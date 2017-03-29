@@ -13,11 +13,7 @@ type MovieHandler struct{}
 
 func (h *MovieHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	encoder := json.NewEncoder(w)
-	movie := movie.Person({
-		Name: "Sofia Copolla",
-		Age: 42,
-	})
-
+	movie := movie.Person{ Name: "Sofia Copolla", Age: 42 }
 	err := encoder.Encode(movie)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
